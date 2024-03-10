@@ -1,13 +1,10 @@
-from flask import Flask, render_template, request, redirect, session
+from flask import Flask, render_template
 import sqlite3
 from sqlite3 import Error
-from flask_bcrypt import Bcrypt
 
 DATABASE = "data.db"
 
 app = Flask(__name__)
-bcrypt = Bcrypt(app)
-app.secret_key = "ueuywq9571"
 
 def create_connection(db_file):
     try:
@@ -25,15 +22,6 @@ def fetchall(db_file, query):
     con.commit()
     con.close()
     return allfetched
-
-def fetchone(db_file, query):
-    con = create_connection(db_file)
-    cur = con.cursor()
-    cur.execute(query)
-    onefetched = cur.fetchone()
-    con.commit()
-    con.close()
-    return onefetched
 
 @app.route('/')
 def render_menu_page():
