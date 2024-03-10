@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block pageheading %}
+Table
+{% endblock %}
+{% block main %}
+    <table style="border:1px solid black">
+        <tr>
+            <th style="border:1px solid black">Id</th>
+            <th style="border:1px solid black">Student</th>
+            <th style="border:1px solid black">Homework</th>
+        </tr>
+        {% for student in students %}
+        <tr>
+            <td style="border:1px solid black">{{ student[0] }}</td>
+            <td style="border:1px solid black">{{ student[1] }}</td>
+            <td style="border:1px solid black">{{ homeworks[student[2]-1] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
